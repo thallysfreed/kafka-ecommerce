@@ -1,7 +1,5 @@
 package br.com.ecommerce;
 
-import org.apache.kafka.common.protocol.types.Field;
-
 import java.math.BigDecimal;
 
 public class Order {
@@ -14,5 +12,9 @@ public class Order {
         this.orderId = orderId;
         this.amount = amount;
         this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }
