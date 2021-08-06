@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Map;
+import java.util.UUID;
 
 public class CreateUserService {
 
@@ -42,10 +43,11 @@ public class CreateUserService {
     private void insertNewUser(String email) throws SQLException {
         var insert = connection.prepareStatement("insert into Users (uuid, email) " +
                 "values (?,?)");
-        insert.setString(1, "uuid");
+        var uuid = UUID.randomUUID().toString();
+        insert.setString(1, uuid);
         insert.setString(2, email);
         insert.execute();
-        System.out.println("Usuário uuid e " + email + " inserido");
+        System.out.println("Usuário " +uuid+ " email " + email + " inserido");
     }
 
     private boolean ifNewUser(String email) throws SQLException {
